@@ -9,7 +9,7 @@ var twilio = require('twilio');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-var userLogin = require("./routes/authentication/userLogin.js");
+// var userLogin = require("./routes/authentication/userLogin.js");
 
 var app = express();
 
@@ -86,12 +86,12 @@ app.get("/userSignup", (req, res) => {
 app.get("/phoneLogin", (req, res) => {
     res.render('phoneLogin.hbs');
 });
-app.post("/", indexPage.postData);
+// app.post("/", indexPage.postData);
 
-app.get("/userLogin", userLogin.getData);
-app.post("/userLogin", userLogin.postData);
+// app.get("/userLogin", userLogin.getData);
+// app.post("/userLogin", userLogin.postData);
 
-app.get("/userLogout", userLogin.logout);
+// app.get("/userLogout", userLogin.logout);
 
 console.log('app running!');
 
