@@ -10,7 +10,7 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous">
     <link rel="stylesheet" href="css/indexStyle.css">
-    <title>Index</title>
+    <title>otp verification</title>
 </head>
 
 <body>
@@ -21,29 +21,23 @@
     <div class="container-fluid">
         <div class="row">
             <div class="offset-md-4 col-md-4" id="form">
-            <form action="/" method="post">
-                <h4>User-Login</h4>
+            <form action="/otpVerification" method="POST">
+                <h4>OTP-verification</h4>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control"
-                        id="exampleInputEmail1" name="email"
-                        aria-describedby="emailHelp"
-                        placeholder="Email">
-                    <small id="emailHelp"
+                    <label for="exampleInputPhone">OTP</label>
+                    <input type="text" class="form-control"
+                        id="exampleInputPhone" name="otp"
+                        aria-describedby="phoneHelp"
+                        placeholder="Enter OTP">
+                    <small id="phoneHelp"
                         class="form-text text-muted"></small>
-                </div>
-                <div class="form-group">
-                    <label
-                        for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control"
-                        id="password" name="password" placeholder="Password">
                 </div>
 
                 <button type="submit" class="btn btn-secondary">
-                    Login
+                    Verify
                 </button>
 
-                <a href="/phoneLogin">Login with phone</a>
+                <a href="/phoneLogin">Back to phone login</a>
             </form>
         </div>
     
