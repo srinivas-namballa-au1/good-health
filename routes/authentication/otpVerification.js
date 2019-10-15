@@ -1,9 +1,6 @@
 const express = require('express');
 const Router = express.Router();
 const connection = require('../../connection.js');
-const bcrypt = require('bcrypt');
-var twilio = require('twilio');
-var otpGenerator = require('otp-generator');
 
 Router.use(express.urlencoded({extended: false}));
 

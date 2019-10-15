@@ -1,7 +1,6 @@
 var express = require('express');
 var Router = express.Router();
 var connection = require('../../connection.js');
-var bcrypt = require('bcrypt');
 var twilio = require('twilio');
 var otpGenerator = require('otp-generator');
 
