@@ -20,8 +20,8 @@ Router.post('/', (req, res) => {
             for(let i = 0; i < rows.length; i++) {
                 if(rows[i].phone === Number(req.body.phone)) {
                     var otp = otpGenerator.generate(6, { upperCase: false, specialChars: false });
-                    const accountSid = process.env.ACCOUNT_SID;
-                    const authToken = process.env.AUTH_TOKEN;
+                    const accountSid = 'AC34c32b2b88459b3e78c128e285893a43';
+                    const authToken = '9f69f98dc710ddc0970f2235434c5a52';
                     const client = new twilio(accountSid, authToken);
 
                     client.messages.create({
@@ -30,6 +30,7 @@ Router.post('/', (req, res) => {
                         from: '+18126754732' // From a valid Twilio number
                     })
                     .then((message) => console.log(message))
+                    console.log(otp);
                     global.otp = otp;
                     global.phone = req.body.phone;
                     res.render('otpVerification.hbs');

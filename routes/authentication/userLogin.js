@@ -12,7 +12,6 @@ Router.get('/', (req, res) => {
 });
 
 Router.post('/', (req, res) => {
-    console.log(process.env.AUTH_TOKEN);
     connection.query('SELECT email, password, username FROM users', (err, rows, field) => {
         if(!err) {
             for(let i = 0; i < rows.length; i++) {

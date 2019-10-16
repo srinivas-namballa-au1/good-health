@@ -3,11 +3,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
+var mysql = require('mysql');
 
 dotenv.config();
-
-var connection = require('./connection.js');
 
 var userLogin = require('./routes/authentication/userLogin.js');
 var phoneLogin = require('./routes/authentication/phoneLogin.js');
@@ -19,12 +18,19 @@ const saltRounds = 10;
 var app = express();
 
 // app settings
-app.set("view engine", "hbs");
+app.set("view engine", ".hbs");
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(session({secret: "marskey" }));
 
 // serve static files
 app.use(express.static('public'));
+
+var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'good-health'
+})
 
 connection.connect((err) => {
     if(!err) {
@@ -41,7 +47,7 @@ connection.connect((err) => {
                 bcrypt.hash(password, saltRounds, function(err, hash) {
                     if(!err) {
                         values[i][1] = hash;
-                        var sql = "INSERT INTO users (`username`, `password`, `email`, `contact number`) VALUES ('"+values[i][0]+"', '"+values[i][1]+"', '"+values[i][2]+"', '"+values[i][3]+"')";
+                        var sql = "INSERT INTO users (`username`, `password`, `email`, `phone`) VALUES ('"+values[i][0]+"', '"+values[i][1]+"', '"+values[i][2]+"', '"+values[i][3]+"')";
                         connection.query(sql, function (err, result) {
                             if (err) throw err;
                             console.log("1 record inserted");
